@@ -1,0 +1,17 @@
+{
+    "name": "server",
+    "version": "1.0.0",
+    "description": "instagram",
+    "main": "index.js",
+    "scripts": {
+        "start-ts": "ts-node src/index.ts",
+        "watch": "tsc -w"
+    },
+    "author": "thien-va-van",
+    "license": "MIT",
+    "devDependencies": {
+        "@types/node": "^20.6.0",
+        "ts-node": "^10.9.1",
+        "typecript": "0.0.1-security"
+    }
+}
