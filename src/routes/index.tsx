@@ -5,7 +5,8 @@ import Reels from "../pages/Reels";
 
 type route = {
     path: string,
-    component: React.ComponentType<any>
+    component: React.ComponentType<any>,
+    layout?: React.ComponentType<any> 
 }
 
 const publicRoutes: route[] = [

@@ -2,9 +2,10 @@ import './reels.scss';
 
 
 function Reels() {
-  return <>
+  return (
     <h2>Reels page</h2>
-  </>
+  )
+
 }
 
 export default Reels;
