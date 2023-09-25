@@ -1,4 +1,4 @@
-import './reels.scss';
+import './reels.module.scss';
 
 
 function Reels() {

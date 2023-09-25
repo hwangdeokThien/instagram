@@ -1,4 +1,4 @@
-import './profile.scss';
+import './profile.module.scss';
 
 
 function Profile() {
