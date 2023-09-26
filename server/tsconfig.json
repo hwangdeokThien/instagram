@@ -23,6 +23,9 @@
     "resolveJsonModule": true,
     "baseUrl": "."
   },
+  "watchOptions": {
+    
+  },
   "exclude": ["node_modules"],
   "include": ["./src/**/*.ts"]
 }
