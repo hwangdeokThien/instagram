@@ -3,11 +3,12 @@ import { User } from "../models/user";
 import { Arg, Mutation, Resolver } from "type-graphql";
 import { UserMutationResponse } from "../types/userMutationResponse";
 import { RegisterInput } from "../types/registerInput";
+import { LoginInput } from "../types/loginInput";
 import { validateRegisterInput } from "../utils/validateRegister";
 
 @Resolver()
 export class UserResolver {
-  @Mutation((_returns) => UserMutationResponse, { nullable: true })
+  @Mutation((_returns) => UserMutationResponse)
   async register(
     @Arg("registerInput") registerInput: RegisterInput
   ): Promise<UserMutationResponse> {
@@ -18,20 +19,19 @@ export class UserResolver {
 
     try {
       const { username, email, password } = registerInput;
-      const existingUsers = await User.find({
+      const existingUser = await User.findOne({
         where: [{ username }, { email }],
       });
-      if (existingUsers.length !== 0)
+      if (existingUser)
         return {
           code: 400,
           success: false,
           message: "Duplicated username or email!",
           errors: [
             {
-              field:
-                existingUsers[0].username === username ? "username" : "email",
+              field: existingUser.username === username ? "username" : "email",
               message: `${
-                existingUsers[0].username === username ? "Username" : "Email"
+                existingUser.username === username ? "Username" : "Email"
               } already taken`,
             },
           ],
@@ -50,6 +50,58 @@ export class UserResolver {
         success: true,
         message: "User registration successful",
         user: await User.save(newUser),
+      };
+    } catch (error) {
+      console.log(error);
+      return {
+        code: 400,
+        success: false,
+        message: "Internal server error!",
+      };
+    }
+  }
+
+  @Mutation((_return) => UserMutationResponse)
+  async login(
+    @Arg("loginInput") loginInput: LoginInput
+  ): Promise<UserMutationResponse> {
+    try {
+      const { usernameOrEmail, password } = loginInput;
+      const existingUser = await User.findOne({
+        where: [{ username: usernameOrEmail }, { email: usernameOrEmail }],
+      });
+
+      if (!existingUser)
+        return {
+          code: 400,
+          success: false,
+          message: "User not found!",
+          errors: [
+            {
+              field: "usernameOrEmail",
+              message: "Username or email incorrect",
+            },
+          ],
+        };
+
+      const passwordValid = await argon2.verify(
+        existingUser?.password,
+        password
+      );
+
+      if (!passwordValid)
+        return {
+          code: 400,
+          success: false,
+          message: "Wrong password",
+          errors: [{ field: "password", message: "Wrong password" }],
+        };
+
+      return {
+        code: 200,
+        success: true,
+        message: "Login successfully",
+        user: existingUser,
       };
     } catch (error) {
       console.log(error);
