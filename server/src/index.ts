@@ -1,5 +1,6 @@
 require("dotenv").config();
 import "reflect-metadata";
+import http from "http";
 import cors from "cors";
 import mongoose from "mongoose";
 import express, { json } from "express";
@@ -12,6 +13,7 @@ import { buildSchema } from "type-graphql";
 import { expressMiddleware } from "@apollo/server/express4";
 import { UserResolver } from "./resolvers/user";
 import { COOKIE_NAME, __prod__ } from "./constants";
+import { ApolloServerPluginDrainHttpServer } from "@apollo/server/plugin/drainHttpServer";
 
 const main = async () => {
   postgresDataSource
@@ -45,20 +47,32 @@ const main = async () => {
     })
   );
 
+  const httpServer = http.createServer(app);
+
   const apolloServer = new ApolloServer({
     schema: await buildSchema({
       resolvers: [HelloResolver, UserResolver],
     }),
+    plugins: [ApolloServerPluginDrainHttpServer({ httpServer })],
   });
+
+  const PORT = process.env.PORT || 4000;
 
   await apolloServer.start();
 
-  app.use("/graphql", cors(), json(), expressMiddleware(apolloServer));
+  app.use(
+    "/",
+    cors<cors.CorsRequest>(),
+    json(),
+    expressMiddleware(apolloServer, {
+      context: async ({ req, res }) => ({ req, res }),
+    })
+  );
 
-  const PORT = process.env.PORT || 4000;
-  app.listen(PORT, () => {
-    console.log(`Server ready at http://localhost:${PORT}/graphql`);
-  });
+  await new Promise<void>((resolve) =>
+    httpServer.listen({ port: PORT }, resolve)
+  );
+  console.log(`🚀  Server ready at http://localhost:${PORT}/`);
 };
 
 main().catch((error) => console.log(error));
