@@ -15,6 +15,7 @@ function App() {
                         } else if (route.layout !== undefined) {
                             Layout = route.layout as React.FC<{ children?: React.ReactNode }>; // Make sure to cast route.layout to React.FC
                         }
+                        
                         const Page = route.component;
                         return (
                             <Route
