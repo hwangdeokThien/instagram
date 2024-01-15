@@ -3,6 +3,7 @@ import Home from "../pages/Home";
 import Profile from "../pages/Profile";
 import Reels from "../pages/Reels";
 import Login from "../pages/Login";
+import Register from "../pages/Register";
 
 type route = {
     path: string,
@@ -14,7 +15,8 @@ const publicRoutes: route[] = [
     {path: '/', component: Home} ,
     {path: '/reels', component: Reels},
     {path: '/profile', component: Profile},
-    {path: '/login', component: Login, layout : null}
+    {path: '/login', component: Login, layout : null},
+    {path: '/register', component: Register, layout : null}
 ]
 
 const privateRoutes: route[] = [

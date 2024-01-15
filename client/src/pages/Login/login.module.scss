@@ -60,6 +60,12 @@
     margin-bottom: 10px;
 }
 
+.username:focus,
+.password:focus {
+    outline: none;
+    outline: 1px solid rgba(150, 150, 150, 0.9);
+}
+
 .login-submit {
     background-color: rgb(76, 181, 249);
     margin: 4px 0 16px;
@@ -139,8 +145,6 @@
     align-items: center;
     line-height: 30px;
 }
-
-.link-infor {}
 
 .link-infor a {
     font-size: 1.2rem;
