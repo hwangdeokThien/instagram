@@ -1,0 +1,99 @@
+.wrapper {
+    flex: 1;
+    display: flex;
+}
+
+.content {
+    max-width: 100%;
+    padding: 0 100px;
+}
+
+.heading {
+    display: flex;
+    margin: 20px 0;
+    padding: 4px 0;
+    overflow: hidden;
+    position: relative;
+}
+
+.list-stories{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.username{
+    font-size: 1rem;
+    color: var(--white-text-color);
+    margin-top: 2px;
+}
+
+.story {
+    margin: 0 6px;
+    position: relative;
+    padding: 4px;
+    cursor: pointer;
+}
+
+.story::after {
+    content: "";
+    border-radius: 50%;
+    position: absolute;
+    top: -2px;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: conic-gradient(from 210deg,
+            #ffa600 ,
+            #d400ffcc 50%,
+            transparent 50%);
+    mask: radial-gradient(farthest-side, transparent calc(100% - 3px), #fff calc(100% - 3px + 1px));
+}
+
+.story::before {
+    content: "";
+    border-radius: 999px;
+    position: absolute;
+    top: -2px;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: conic-gradient(from 30deg,
+            #d400ffcc,
+            #ffa600 50%,
+            transparent 50%);
+    mask: radial-gradient(farthest-side, transparent calc(100% - 3px), #fff calc(100% - 3px + 1px));
+}
+
+.avatar-user {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+}
+
+.icon-show-more-left, .icon-show-more-right{
+    color: var(--white-text-color);
+    font-size: 2.3rem;
+    z-index: 2;
+    cursor: pointer;
+}
+
+.icon-show-more-left{
+    position: absolute;
+    top: 28px;
+    left: 20px;
+}
+
+.icon-show-more-right{
+    position: absolute;
+    top: 28px;
+    right: 20px;
+}
+
+.body {}
+
+.right-sidebar {
+}
+
+.not-seen {}

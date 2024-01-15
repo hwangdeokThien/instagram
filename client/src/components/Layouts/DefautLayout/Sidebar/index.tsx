@@ -38,9 +38,10 @@ function Sidebar() {
                     <ReelsIcon className={cx("reel-icon", "icon")} />
                     <div className={cx("title")}>Reels</div>
                 </div>
-                <div className={cx("nav-link")}>
+                <div className={cx("nav-link", "message")}>
                     <MessengerIcon className={cx("mess-icon", "icon")} />
                     <div className={cx("title")}>Tin nhắn</div>
+                    <span className={cx("number-message")}>4</span>
                 </div>
                 <div className={cx("nav-link")}>
                     <HeartIcon className={cx("notify-icon", "icon")} />

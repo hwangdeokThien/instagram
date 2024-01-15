@@ -1,7 +1,14 @@
 .container {
     display: flex;
+    height: 100%;
 }
 
 .wrapper{
-    width: 240px;
+    min-width: calc(100% - 83%);
+}
+
+.content{
+    background-color: var(--background-color);
+    width: 100%;
+    display: flex;
 }
