@@ -1,12 +1,13 @@
 import classNames from "classnames/bind";
 import styles from "./home.module.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {faCircleChevronLeft, faCircleChevronRight } from "@fortawesome/free-solid-svg-icons";
+import { faCircleChevronLeft, faCircleChevronRight } from "@fortawesome/free-solid-svg-icons";
 
 const cx = classNames.bind(styles);
 
 function Home() {
     const arrays = [1, 2, 3, 4, 5, 6, 7, 8];
+    const arraysSuggestion = [1, 2, 3, 4, 5];
     return (
         <div className={cx("wrapper")}>
             <div className={cx("content")}>
@@ -26,7 +27,55 @@ function Home() {
                 </div>
                 <div className={cx("body")}></div>
             </div>
-            <div className={cx("right-sidebar")}></div>
+            <div className={cx("right-sidebar")}>
+                <div className={cx("my-account")}>
+                    <div className={cx("right-item")}>
+                        <img src="/img/VanLun.jpg" alt="" className={cx("my-avatar-user")} />
+                        <div className={cx("infor")}>
+                            <p className={cx("username")}>ducvan_09</p>
+                            <p className={cx("myname")}>Đức Vấn</p>
+                        </div>
+                    </div>
+                    <a href="#">Chuyển</a>
+                </div>
+                <div className={cx("suggestion")}>
+                    <div className={cx("title")}>
+                        <p>Gợi ý cho bạn</p>
+                        <a href="#">Xem tất cả</a>
+                    </div>
+                    {arraysSuggestion.map((index) => {
+                        return (
+                            <div key={index} className={cx("your-account")}>
+                                <div className={cx("right-item")}>
+                                    <img src="/img/VanLun.jpg" alt="" className={cx("your-avatar-user")} />
+                                    <div className={cx("infor")}>
+                                        <p className={cx("username")}>ducvan_09</p>
+                                        <p className={cx("myname")}>Đức Vấn</p>
+                                    </div>
+                                </div>
+                                <a href="#" className={cx("following")}>
+                                    Theo dõi
+                                </a>
+                            </div>
+                        );
+                    })}
+                </div>
+                <div className={cx("footer")}>
+                    <div className={cx("extra-info")}>
+                        <a>Giới thiệu .</a>
+                        <a>Trợ giúp .</a>
+                        <a>Báo chí .</a>
+                        <a>API .</a>
+                        <a>Việc làm </a>
+                        <a>Quyền riêng tư .</a>
+                        <a>Điều khoản .</a>
+                        <a>Vị trí .</a>
+                        <a>Ngôn ngữ </a>
+                        <a>Meta đã xác minh .</a>
+                    </div>
+                    <p>© 2024 INSTAGRAM FROM META</p>
+                </div>
+            </div>
         </div>
     );
 }
