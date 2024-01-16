@@ -5,10 +5,12 @@
 
 .wrapper{
     min-width: calc(100% - 83%);
+    position: fixed;
 }
 
 .content{
     background-color: var(--background-color);
     width: 100%;
     display: flex;
+    margin-left: calc(100% - 83%);
 }

@@ -1,0 +1,163 @@
+.wrapper {
+    width: 80%;
+    padding-top: 16px;
+    padding-bottom: 8px;
+    color: var(--white-text-color);
+    border-bottom: 1px solid #595959;
+}
+
+.heading {
+    display: flex;
+    align-items: center;
+    position: relative;
+    margin-bottom: 10px;
+}
+
+.avatar-user {
+    height: 54px;
+    width: 54px;
+    border-radius: 50%;
+    padding: 10px;
+}
+
+.wrapper-avatar{
+    max-height: 42px;
+    max-width: 42px;
+    padding: 0;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.wrapper-avatar::after {
+    content: "";
+    border-radius: 50%;
+    position: absolute;
+    top: 0px;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: conic-gradient(from 210deg,
+            #ffa600,
+            #d400ffcc 50%,
+            transparent 50%);
+    mask: radial-gradient(farthest-side, transparent calc(100% - 2px), #fff calc(100% - 2px));
+}
+
+.wrapper-avatar::before {
+    content: "";
+    border-radius: 999px;
+    position: absolute;
+    top: 0px;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: conic-gradient(from 30deg,
+            #d400ffcc,
+            #ffa600 50%,
+            transparent 50%);
+    mask: radial-gradient(farthest-side, transparent calc(100% - 2px), #fff calc(100% - 2px));
+}
+
+
+.username {
+    font-weight: 500;
+    font-size: 1.4rem;
+    color: #fff;
+}
+
+.time-post {
+    margin-left: 8px;
+    color: var(--grey-text-color);
+}
+
+.extra-options {
+    position: absolute;
+    right: 0;
+    top: 20px;
+    font-size: 2rem;
+}
+
+.body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.content {
+    max-height: 585px;
+    overflow: hidden;
+}
+
+.post {
+    max-width: 510px;
+    max-height: 525px;
+}
+
+.interact {
+    margin: 16px 0 6px;
+    width: 100%;
+}
+
+.icon-lists {
+    display: flex;
+    justify-content: space-between;
+}
+
+.loving,
+.comment,
+.share {
+    margin-right: 12px;
+}
+
+.save {}
+
+.count-loving {
+    margin-top: 4px;
+    font-weight: 500;
+    font-size: 1.4rem;
+    color: #fff;
+}
+
+.footer {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.description {
+    display: flex;
+}
+
+.description p {
+    margin-right: 8px;
+}
+
+.show-comment {
+    border: 0;
+    background-color: var(--background-color);
+    color: var(--grey-text-color);
+    cursor: pointer;
+    text-align: left;
+    margin: 8px 0;
+}
+
+.add-comment {
+    border: 0;
+    background-color: var(--background-color);
+    color: var(--white-text-color);
+    padding: 10px 0;
+}
+.add-comment:focus{
+    outline: none;
+}
+
+.show-emotion{
+    position: absolute;
+    bottom: 10px;
+    right: 0;
+    color: var(--grey-text-color);
+    font-size: 1.4rem;
+}
+

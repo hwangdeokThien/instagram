@@ -1,12 +1,13 @@
-import Tippy from '@tippy.js/react'
-import 'tippy.js/dist/tippy.css'
+import Tippy from "@tippy.js/react";
+import "tippy.js/dist/tippy.css";
 import classNames from "classnames/bind";
 import styles from "./home.module.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleChevronLeft, faCircleChevronRight } from "@fortawesome/free-solid-svg-icons";
 import { ReactNode } from "react";
-import PreviewUser from '../../components/PreviewUser';
-import { Link } from 'react-router-dom';
+import PreviewUser from "../../components/PreviewUser";
+import { Link } from "react-router-dom";
+import Post from "../../components/Post";
 const cx = classNames.bind(styles);
 
 type RenderPreviewProps = {
@@ -17,9 +18,11 @@ function Home() {
     const arraysSuggestion = [1, 2, 3, 4, 5];
 
     const renderPreview = (props: RenderPreviewProps) => {
-        return <div tabIndex={-1} {...props}>
-            <PreviewUser/>
-        </div>;
+        return (
+            <div tabIndex={-1} {...props}>
+                <PreviewUser />
+            </div>
+        );
     };
 
     return (
@@ -40,12 +43,13 @@ function Home() {
                     <FontAwesomeIcon className={cx("icon-show-more-right")} icon={faCircleChevronRight} />
                 </div>
                 <div className={cx("body")}>
-                    
+                    <Post />
+                    <Post />
                 </div>
             </div>
             <div className={cx("right-sidebar")}>
                 <div className={cx("my-account")}>
-                    <Link hrefLang='/profile' className={cx("right-item")} to={'profile'}>
+                    <Link hrefLang="/profile" className={cx("right-item")} to={"profile"}>
                         <img src="/img/VanLun.jpg" alt="" className={cx("my-avatar-user")} />
                         <div className={cx("infor")}>
                             <p className={cx("username")}>ducvan_09</p>
@@ -61,12 +65,12 @@ function Home() {
                     </div>
                     {arraysSuggestion.map((index) => {
                         return (
-                            <Tippy                            
+                            <Tippy
                                 interactive
                                 delay={[800, 0]}
                                 placement="bottom-start"
-                                offset={[-6, -20].join(',')}
-                                content={<div>{renderPreview({ propps: 'your content here' })}</div>}
+                                offset={[-6, -20].join(",")}
+                                content={<div>{renderPreview({ propps: "your content here" })}</div>}
                             >
                                 <div key={index} className={cx("your-account")}>
                                     <div className={cx("right-item")}>
