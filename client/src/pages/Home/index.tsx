@@ -39,7 +39,9 @@ function Home() {
                     })}
                     <FontAwesomeIcon className={cx("icon-show-more-right")} icon={faCircleChevronRight} />
                 </div>
-                <div className={cx("body")}></div>
+                <div className={cx("body")}>
+                    
+                </div>
             </div>
             <div className={cx("right-sidebar")}>
                 <div className={cx("my-account")}>
