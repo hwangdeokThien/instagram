@@ -1,0 +1,106 @@
+.wrapper {
+    width: 360px;
+    max-height: 350px;
+    background-color: var(--background-color);
+    color: var(--white-text-color);
+    border-radius: 4px;
+    font-size: 1.4rem;
+}
+
+.heading {
+    display: flex;
+    flex-direction: column;
+}
+
+.top-items {
+    display: flex;
+    padding: 30px 20px 10px;
+}
+
+.avatar-user {
+    height: 68px;
+    width: 68px;
+    border-radius: 50%;
+}
+
+.infor-user {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin-left: 10px;
+}
+
+.username {
+    font-size: 1.4rem;
+    font-weight: 500;
+}
+
+.name {
+    font-size: 1.4rem;
+    font-weight: 400;
+    color: var(--grey-text-color);
+}
+
+.bottom-items {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    justify-content: space-between;
+    padding: 20px 0;
+}
+
+.countPost,.count,.countFollower, .countFollowing{
+    font-size: 1.4rem;
+    text-align: center;
+    font-weight: 500;
+}
+
+.countPost,.count,.countFollower, .countFollowing{
+    margin: 0 16px;
+}
+
+.body {
+
+}
+
+.list-posts {
+}
+
+.post {
+    height: 110px;
+    width: 120px;
+}
+
+.no-posts {
+
+}
+
+.no-posts img {
+
+}
+
+.no-posts span {
+
+}
+
+.no-posts p {
+
+}
+
+.footer {
+
+}
+
+.follow {
+    width: 90%;
+    background-color: #0089E2;
+    color: var(--white-text-color);
+    padding: 10px;
+    border: 0;
+    border-radius: 10px;
+    margin: 10px;
+}
+
+.icon-follow {
+    margin-right: 8px;
+}
