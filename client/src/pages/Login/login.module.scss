@@ -139,20 +139,6 @@
     padding-left: 10px;
 }
 
-.footer {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    line-height: 30px;
-}
-
-.link-infor a {
-    font-size: 1.2rem;
-    text-decoration: none;
-    color: var(--black-text-color);
-    margin: 6px;
-}
-
 .open {
     display: flex;
     animation: fadeIn 1s ease-in-out;

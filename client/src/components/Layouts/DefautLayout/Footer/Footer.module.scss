@@ -1,0 +1,14 @@
+.footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    line-height: 30px;
+    font-size: 1.2rem;
+    color: var(--grey-text-color);
+}
+
+.link-infor a {
+    font-size: 1.2rem;
+    color: var(--grey-text-color);
+    margin: 6px;
+}

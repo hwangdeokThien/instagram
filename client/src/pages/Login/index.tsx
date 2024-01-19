@@ -4,6 +4,7 @@ import { InstagramIcon } from "../../components/Icon";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
+import Footer from "../../components/Layouts/DefautLayout/Footer";
 
 const cx = classNames.bind(styles);
 // Khai báo một type mới cho useRef với kiểu HTMLImageElement hoặc null
@@ -82,24 +83,7 @@ function Login() {
                     </div>
                 </div>
             </div>
-            <div className={cx("footer")}>
-                <div className={cx("link-infor")}>
-                    <a href="#">Meta</a>
-                    <a href="#">Giớt thiệu</a>
-                    <a href="#">Blog</a>
-                    <a href="#">Việc Làm</a>
-                    <a href="#">Trợ Giúp</a>
-                    <a href="#">Quyền riêng tư</a>
-                    <a href="#">Điều Khoản</a>
-                    <a href="#">Vị trí</a>
-                    <a href="#">Instagram Lite</a>
-                    <a href="#">Threads</a>
-                    <a href="#">Tải thông tin người liên hệ lên & người không phải người dùng</a>
-                    <a href="#">Meta đã xác minh</a>
-                </div>
-                <p>Tiếng Việt</p>
-                <p>© 2024 Instagram from Meta</p>
-            </div>
+            <Footer />
         </div>
     );
 }
