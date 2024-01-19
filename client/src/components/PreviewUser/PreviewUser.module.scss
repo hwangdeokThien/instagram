@@ -46,25 +46,32 @@
     align-items: center;
     justify-content: center;
     justify-content: space-between;
-    padding: 20px 0;
+    padding: 20px 0 10px;
 }
 
-.countPost,.count,.countFollower, .countFollowing{
+.countPost,
+.count,
+.countFollower,
+.countFollowing {
     font-size: 1.4rem;
     text-align: center;
     font-weight: 500;
 }
 
-.countPost,.count,.countFollower, .countFollowing{
+.countPost,
+.count,
+.countFollower,
+.countFollowing {
     margin: 0 16px;
 }
 
 .body {
-
+    padding: 10px 0;
+    // border-top: 1px solid #505050;
+    // border-bottom: 1px solid #505050;
 }
 
-.list-posts {
-}
+.list-posts {}
 
 .post {
     height: 110px;
@@ -72,24 +79,31 @@
 }
 
 .no-posts {
-
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 .no-posts img {
-
+    height: 50px;
+    width: 50px;
 }
 
 .no-posts span {
-
+    font-size: 1.4rem;
+    font-weight: 500;
+    color: #fff;
 }
 
 .no-posts p {
-
+    font-size: 1.4rem;
+    font-weight: 400;
+    color: var(--grey-text-color);
+    text-align: center;
 }
 
-.footer {
-
-}
+.footer {}
 
 .follow {
     width: 90%;

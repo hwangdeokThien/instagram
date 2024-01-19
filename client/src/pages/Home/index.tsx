@@ -4,23 +4,19 @@ import classNames from "classnames/bind";
 import styles from "./home.module.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleChevronLeft, faCircleChevronRight } from "@fortawesome/free-solid-svg-icons";
-import { ReactNode } from "react";
 import PreviewUser from "../../components/PreviewUser";
 import { Link } from "react-router-dom";
 import Post from "../../components/Post";
 const cx = classNames.bind(styles);
 
-type RenderPreviewProps = {
-    propps: ReactNode;
-};
 function Home() {
     const arrays = [1, 2, 3, 4, 5, 6, 7, 8];
-    const arraysSuggestion = [1, 2, 3, 4, 5];
+    const arraysSuggestion = [1, 2, 3, 4];
 
-    const renderPreview = (props: RenderPreviewProps) => {
+    const renderPreview = (isExistingPoster: boolean) => {
         return (
-            <div tabIndex={-1} {...props}>
-                <PreviewUser />
+            <div tabIndex={-1}>
+                <PreviewUser isExistingPoster={isExistingPoster} />
             </div>
         );
     };
@@ -70,7 +66,7 @@ function Home() {
                                 delay={[800, 0]}
                                 placement="bottom-start"
                                 offset={[-6, -20].join(",")}
-                                content={<div>{renderPreview({ propps: "your content here" })}</div>}
+                                content={<div>{renderPreview(true)}</div>}
                             >
                                 <div key={index} className={cx("your-account")}>
                                     <div className={cx("right-item")}>
@@ -87,6 +83,26 @@ function Home() {
                             </Tippy>
                         );
                     })}
+                    <Tippy
+                        interactive
+                        delay={[800, 0]}
+                        placement="bottom-start"
+                        offset={[-6, -20].join(",")}
+                        content={<div>{renderPreview(false)}</div>}
+                    >
+                        <div key={6} className={cx("your-account")}>
+                            <div className={cx("right-item")}>
+                                <img src="/img/VanLun.jpg" alt="" className={cx("your-avatar-user")} />
+                                <div className={cx("infor")}>
+                                    <p className={cx("username")}>ducvan_09</p>
+                                    <p className={cx("myname")}>Đức Vấn</p>
+                                </div>
+                            </div>
+                            <a href="#" className={cx("following")}>
+                                Theo dõi
+                            </a>
+                        </div>
+                    </Tippy>
                 </div>
                 <div className={cx("footer")}>
                     <div className={cx("extra-info")}>

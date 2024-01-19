@@ -1,13 +1,20 @@
 import classNames from "classnames/bind";
 import styles from "./PreviewUser.module.scss";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUserPlus } from "@fortawesome/free-solid-svg-icons";
 
 const cx = classNames.bind(styles);
 
-function PreviewUser() {
-    const [isHavingPoster, setIsHavingPoster] = useState(true);
+type PreviewUser = {
+    isExistingPoster: boolean
+}
+
+function PreviewUser(props: PreviewUser) {
+    const [isHavingPoster, setIsHavingPoster] = useState(false);
+    useEffect(() => {
+        setIsHavingPoster(props.isExistingPoster);
+    }, [props.isExistingPoster]);
     return (
         <div className={cx("wrapper")}>
             <div className={cx("heading")}>
@@ -42,7 +49,7 @@ function PreviewUser() {
                     </div>
                 ) : (
                     <div className={cx("no-posts")}>
-                        <img src="/img/NoPoster.jpg" alt="" srcSet="" />
+                        <img src="/img/OnlyNoPoster.png" alt="" srcSet="" />
                         <span>Chưa có bài viết nào</span>
                         <p>Khi ducvan_09 chia sẻ, bạn sẽ thấy ảnh và thước phim của họ ở đây.</p>
                     </div>

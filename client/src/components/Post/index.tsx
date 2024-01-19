@@ -17,7 +17,7 @@ function Post() {
     const renderPreview = (props: RenderPreviewProps) => {
         return (
             <div tabIndex={-1} {...props}>
-                <PreviewUser />
+                <PreviewUser isExistingPoster={true}/>
             </div>
         );
     };
