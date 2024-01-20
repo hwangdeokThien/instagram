@@ -11,12 +11,35 @@ import {
     FindIcon,
 } from "../../../Icon";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBars } from "@fortawesome/free-solid-svg-icons";
+import {
+    faBars,
+    faBookmark,
+    faChartLine,
+    faGear,
+    faMoon,
+    faTriangleExclamation,
+} from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
+import { RefObject, useRef } from "react";
 
 const cx = classNames.bind(styles);
 
 function Sidebar() {
+    const btnShowExtraOptions = useRef<HTMLButtonElement>(null) as RefObject<HTMLButtonElement>;
+    const extraOptions = useRef<HTMLDivElement>(null) as RefObject<HTMLDivElement>;
+
+    const showExtraOptions = () => {
+        const element = extraOptions.current;
+        if (element) {
+            if (element.classList.contains("open")) {
+              element.style.display = "none";
+            } else {
+              element.style.display = "flex";
+            }
+            element.classList.toggle("open");
+          }
+    };
+
     return (
         <div className={cx("sidebar")}>
             <Link className={cx("logo")} to={"/"}>
@@ -57,9 +80,39 @@ function Sidebar() {
                     <div className={cx("title")}>Trang cá nhân</div>
                 </Link>
             </div>
-            <div className={cx("extra-nav", "nav-link")}>
+            <button ref={btnShowExtraOptions} onClick={showExtraOptions} className={cx("extra-nav", "nav-link")}>
                 <FontAwesomeIcon icon={faBars} className={cx("bar-icon", "icon")} />
                 <div className={cx("title")}>Xem thêm</div>
+            </button>
+            <div ref={extraOptions} className={cx("extra-modal")}>
+                <button className={cx("option")}>
+                    <FontAwesomeIcon icon={faGear} className={cx("small-icon")} />
+                    <p>Cài đặt</p>
+                </button>
+                <button className={cx("option")}>
+                    <FontAwesomeIcon icon={faChartLine} className={cx("small-icon")} />
+                    <p>Hoạt động của bạn</p>
+                </button>
+                <button className={cx("option")}>
+                    <FontAwesomeIcon icon={faBookmark} className={cx("small-icon")} />
+                    <p>Đã lưu</p>
+                </button>
+                <button className={cx("option")}>
+                    <FontAwesomeIcon icon={faMoon} className={cx("small-icon")} />
+                    <p>Chuyển chế độ</p>
+                </button>
+                <button className={cx("option")}>
+                    <FontAwesomeIcon icon={faTriangleExclamation} className={cx("small-icon")} />
+                    <p>Báo cáo sự cố</p>
+                </button>
+                <div className={cx("seperate-line")}></div>
+                <button className={cx("option")}>
+                    <p>Chuyển tài khoản</p>
+                </button>
+                <div className={cx("seperate-line", "thin")}></div>
+                <Link to={"/login"} className={cx("option")}>
+                    <p>Đăng xuất</p>
+                </Link>
             </div>
         </div>
     );
