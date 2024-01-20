@@ -3,6 +3,7 @@
 :root {
     --primary-color: #ff3040;
     --background-color: #000000;
+    --grey-background-color: #363636;
     --white-text-color: #F8FCFF;
     --black-text-color: #161616;
     --grey-text-color:#7c7c7c;
@@ -28,4 +29,8 @@ body {
 
 a{
     text-decoration: none;
+}
+
+button{
+    border: 0;
 }

@@ -1,5 +1,245 @@
-.wrapper{
+.wrapper {
     color: var(--white-text-color);
     min-height: 100vh;
     width: 100%;
+    padding: 20px 140px 0;
+    font-size: 1.6rem;
+}
+
+.heading {
+    display: flex;
+    align-items: center;
+}
+
+.avatar-user {
+    height: 156px;
+    width: 156px;
+    border-radius: 50%;
+    margin: 40px 40px 0 80px;
+    display: flex;
+    align-items: center;
+}
+
+.individual-information {
+    display: flex;
+    flex-direction: column;
+    margin-left: 50px;
+}
+
+.top-items {
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.username {
+    font-size: 1.8rem;
+}
+
+.eidt-information {
+    padding: 8px 12px;
+    border-radius: 10px;
+    margin: 0 10px 0 20px;
+    background-color: var(--grey-background-color);
+    color: var(--white-text-color);
+    font-weight: 600;
+}
+
+.show-store {
+    padding: 8px 12px;
+    border-radius: 10px;
+    background-color: var(--grey-background-color);
+    color: var(--white-text-color);
+    font-weight: 600;
+}
+
+.icon-setting {
+    margin: 20px;
+    font-size: 2rem;
+}
+
+.bottom-items {}
+
+.interaction {
+    display: flex;
+}
+
+.count-post {}
+
+.count-folowwer {
+    margin-left: 20px;
+    font-weight: 400;
+}
+
+.count-folowwing {
+    margin-left: 20px;
+    font-weight: 400;
+}
+
+.name {
+    font-size: 1.4rem;
+    margin: 20px 0 10px;
+    font-size: 1.3rem;
+    font-weight: 500;
+}
+
+.second-name {
+    font-size: 1.2rem;
+}
+
+.link-face {
+    font-size: 1.3rem;
+    color: #bed2de;
+    font-weight: 500;
+    font-size: 1.3rem;
+}
+
+.icon-facebook {
+    margin-right: 4px;
+    color: #bed2de;
+    font-weight: 500;
+}
+
+.body {
+    display: flex;
+    flex-direction: column;
+}
+
+.list-stories {
+    margin: 40px 0 30px 30px;
+    display: flex;
+}
+
+.list-stories>div {
+    margin: 30px;
+}
+
+.story {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin: 4px;
+}
+
+.story p {
+    margin-top: 10px;
+    font-size: 1.4rem;
+}
+
+.wrapper-story {
+    position: relative;
+}
+
+.wrapper-story::after {
+    content: "";
+    border-radius: 50%;
+    position: absolute;
+    top: 0px;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: conic-gradient(from 210deg,
+            var(--grey-background-color),
+            var(--grey-background-color) 50%,
+            transparent 50%);
+    mask: radial-gradient(farthest-side, transparent calc(100% - 3px), #fff calc(100% - 3px + 1px));
+}
+
+.wrapper-story::before {
+    content: "";
+    border-radius: 999px;
+    position: absolute;
+    top: 0px;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: conic-gradient(from 30deg,
+            var(--grey-background-color),
+            var(--grey-background-color) 50%,
+            transparent 50%);
+    mask: radial-gradient(farthest-side, transparent calc(100% - 3px), #fff calc(100% - 3px + 1px));
+}
+
+.story {
+    height: 78px;
+    width: 78px;
+    border-radius: 50%;
+}
+
+.story p {
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+
+.wrapper-addStory {
+    border-radius: 50%;
+    margin: 0 20px;
+    height: 84px;
+    width: 84px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #121212;
+    border: 3px solid var(--grey-background-color);
+}
+
+.icon-plus {
+    color: var(--grey-text-color);
+}
+
+.content {
+    margin-bottom: 40px;
+    border-top: 1px solid var(--grey-background-color);
+}
+
+.navigation {
+    display: flex;
+    justify-content: center;
+}
+
+.navigation div {
+    margin: 0 20px;
+    font-size: 1.4rem;
+}
+
+.navigation p {
+    color: var(--grey-text-color);
+    display: flex;
+}
+
+.icon-post,
+.icon-savedPost,
+.icon-attackedTag {
+    font-size: 1.3rem;
+    margin-right: 8px;
+}
+
+.show-post,
+.show-savedPost,
+.show-attackedTag {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    color: var(--grey-text-color);
+    background-color: var(--black-ground-color);
+}
+
+
+.list-posts {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.post {
+    height: 308px;
+    width: 308px;
+    margin: 2px;
+}
+
+.active {
+    color: #fff;
+}
+.active p {
+    color: #fff;
 }
