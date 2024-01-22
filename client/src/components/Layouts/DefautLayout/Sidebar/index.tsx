@@ -31,12 +31,11 @@ function Sidebar() {
     const showExtraOptions = () => {
         const element = extraOptions.current;
         if (element) {
-            if (element.classList.contains("open")) {
+            if (element.style.display == "flex") {
               element.style.display = "none";
             } else {
               element.style.display = "flex";
             }
-            element.classList.toggle("open");
           }
     };
 
