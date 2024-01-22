@@ -1,10 +1,11 @@
 import styles from "./login.module.scss";
 import classNames from "classnames/bind";
-import { InstagramIcon } from "../../components/Icon";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import Footer from "../../components/Layouts/DefautLayout/Footer";
+import axios from "axios";
+import { faSquareFacebook } from "@fortawesome/free-brands-svg-icons";
 
 const cx = classNames.bind(styles);
 // Khai báo một type mới cho useRef với kiểu HTMLImageElement hoặc null
@@ -18,6 +19,44 @@ type ImageRef = React.RefObject<HTMLImageElement>;
 // ]
 function Login() {
     const slideRefs: ImageRef = useRef(null);
+    const [username, setUsername] = useState<String>("");
+    const [password, setPassword] = useState<String>("");
+    const warningFillInforRef = useRef<HTMLParagraphElement>(null);
+    const warningFailedLoginRef = useRef<HTMLParagraphElement>(null);
+
+    const checkLogin = () => {
+        if (username?.trim() !== "" && password?.trim() !== "") {
+            if (warningFillInforRef.current !== null) {
+                warningFillInforRef.current.style.display = "none";                
+            }
+            const requestData = {
+                userName: username,
+                userPassword: password,
+            };
+
+            axios
+                .post("http://localhost:8080/api/v1/users/checkLogin", requestData, {
+                    headers: {
+                        Accept: "application/json",
+                        "Content-Type": "application/json",
+                    },
+                })
+                .then((res) => {
+                    if (res.data.status == "ok") {
+                        sessionStorage.setItem("userID", res.data.data[0].id);
+                        window.location.href = "/";
+                    }
+                })
+                .catch(() => {
+                    if (warningFailedLoginRef.current !== null) {
+                        warningFailedLoginRef.current.style.display = "block"; 
+                    }
+                });
+        } else if (warningFillInforRef.current !== null && warningFailedLoginRef.current !== null) {
+            warningFillInforRef.current.style.display = "block"; 
+            warningFailedLoginRef.current.style.display = "none"; 
+        }
+    };
 
     useEffect(() => {
         const intervalId = setInterval(() => {
@@ -37,6 +76,7 @@ function Login() {
         // Cleanup function khi component unmount
         return () => clearInterval(intervalId);
     }, []);
+
     return (
         <div className={cx("wrapper")}>
             <div className={cx("body")}>
@@ -53,14 +93,26 @@ function Login() {
                             type="text"
                             className={cx("username")}
                             placeholder="Số điện thoại, tên người dùng hoặc email"
+                            onChange={(e) => setUsername(e.target.value)}
                         />
-                        <input type="text" className={cx("password")} placeholder="Mật khẩu" />
-                        <input type="button" className={cx("login-submit")} value="Đăng nhập" />
+                        <input
+                            type="password"
+                            className={cx("password")}
+                            placeholder="Mật khẩu"
+                            onChange={(e) => setPassword(e.target.value)}
+                        />
+                        <p ref={warningFillInforRef} className={cx("danger-infor")}>
+                            Hãy điền đầy đủ thông tin.
+                        </p>
+                        <input type="button" className={cx("login-submit")} value="Đăng nhập" onClick={checkLogin} />
                         <p className={cx("seperate")}>HOẶC</p>
                         <a href="#" className={cx("login-with-facebook")}>
-                            {/* <FontAwesomeIcon icon={faSquareFacebook} /> */}
+                            <FontAwesomeIcon icon={faSquareFacebook} className={cx("icon-facebook")} />
                             Đăng nhập bằng Facebook
                         </a>
+                        <p ref={warningFailedLoginRef} className={cx("danger-infor-login")}>
+                            Rất tiếc, mật khẩu của bạn không đúng. Vui lòng kiểm tra lại mật khẩu.
+                        </p>
                         <a href="#" className={cx("forgot-password")}>
                             Quên mật khẩu?
                         </a>
