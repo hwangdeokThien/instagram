@@ -29,6 +29,7 @@ const main = async () => {
 
   // session/cookie store
   const mongoUrl = process.env.MONGODB_URL || "";
+  console.log(mongoUrl);
   await mongoose.connect(mongoUrl);
   console.log("MongoDB connected!");
   app.use(
