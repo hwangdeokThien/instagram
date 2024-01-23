@@ -3,10 +3,11 @@
 :root {
     --primary-color: #ff3040;
     --background-color: #000000;
-    --grey-background-color: #363636;
+    --grey-background-color: #1f1f1f;
     --white-text-color: #F8FCFF;
     --black-text-color: #161616;
-    --grey-text-color:#7c7c7c;
+    --grey-text-color:#A8A8A8;
+    --blue-text-color:#2196F3;
 }
 
 *{
@@ -34,3 +35,23 @@ a{
 button{
     border: 0;
 }
+
+
+/* Webkit (Chrome, Safari, Edge) */
+::-webkit-scrollbar {
+    width: 10px;
+    border-radius: 50%;
+}
+
+::-webkit-scrollbar-track {
+    background-color: var(--grey-background-color);
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: var(--grey-text-color);
+    border-radius: 8px;
+}
+
+// ::-webkit-scrollbar-thumb:hover {
+//     background: var(--background-color);
+// }

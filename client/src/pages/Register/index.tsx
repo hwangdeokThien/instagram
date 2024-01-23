@@ -18,13 +18,13 @@ function Register() {
                         Đăng nhập bằng facebook
                     </button>
                     <p>HOẶC</p>
-                    <form action="">
+                    <div>
                         <input type="text" className={cx("infor-user")} placeholder="Số di động" />
                         <input type="text" className={cx("infor-user")} placeholder="Email" />
                         <input type="text" className={cx("infor-user")} placeholder="Tên đầy đủ" />
                         <input type="text" className={cx("infor-user")} placeholder="Tên người dùng" />
                         <input type="text" className={cx("infor-user")} placeholder="Mật khẩu" />
-                    </form>
+                    </div>
                     <p>
                         Những người dùng dịch vụ của chúng tôi có thể đã tải thông tin liên hệ của bạn lên Instagram.
                         <a href="#" className={cx("extra-information")}>
