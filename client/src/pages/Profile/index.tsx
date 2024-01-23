@@ -5,6 +5,7 @@ import classNames from "classnames/bind";
 import { faBookmark, faClipboardUser, faGear, faPlus, faTableCells } from "@fortawesome/free-solid-svg-icons";
 import { faFacebook } from "@fortawesome/free-brands-svg-icons";
 import { BigPlusIcon } from "../../components/Icon";
+import { Link } from "react-router-dom";
 
 const cx = classNames.bind(styles);
 
@@ -16,7 +17,7 @@ function Profile() {
                 <div className={cx("individual-information")}>
                     <div className={cx("top-items")}>
                         <div className={cx("username")}>ducvan_09</div>
-                        <button className={cx("eidt-information")}>Chỉnh sửa trang cá nhân</button>
+                        <Link to={"/detailuser"} className={cx("edit-information")}>Chỉnh sửa trang cá nhân</Link>
                         <button className={cx("show-store")}>Xem kho lưu trữ</button>
                         <FontAwesomeIcon icon={faGear} className={cx("icon-setting")} />
                     </div>

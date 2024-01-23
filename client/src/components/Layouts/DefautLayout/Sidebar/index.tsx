@@ -4,7 +4,7 @@ import {
     InstagramIcon,
     HomeIcon,
     ReelsIcon,
-    MessengerIcon,
+    MessangerIcon,
     DiscoverIcon,
     HeartIcon,
     CreateIcon,
@@ -62,7 +62,7 @@ function Sidebar() {
                     <div className={cx("title")}>Reels</div>
                 </Link>
                 <Link className={cx("nav-link", "message")} to={"#"}>
-                    <MessengerIcon className={cx("mess-icon", "icon")} />
+                    <MessangerIcon className={cx("mess-icon", "icon")} />
                     <div className={cx("title")}>Tin nhắn</div>
                     <span className={cx("number-message")}>4</span>
                 </Link>

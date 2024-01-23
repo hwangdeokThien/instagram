@@ -7,11 +7,18 @@ import { faCircleChevronLeft, faCircleChevronRight } from "@fortawesome/free-sol
 import PreviewUser from "../../components/PreviewUser";
 import { Link } from "react-router-dom";
 import Post from "../../components/Post";
+import { useEffect } from "react";
 const cx = classNames.bind(styles);
 
 function Home() {
     const arrays = [1, 2, 3, 4, 5, 6, 7, 8];
     const arraysSuggestion = [1, 2, 3, 4];
+
+    useEffect(() => {
+        if(sessionStorage.getItem("userID") == null ) {
+            window.location.href = "/login";
+        }
+    }, [sessionStorage.getItem("userID")])
 
     const renderPreview = (isExistingPoster: boolean) => {
         return (
@@ -28,8 +35,8 @@ function Home() {
                     <FontAwesomeIcon className={cx("icon-show-more-left")} icon={faCircleChevronLeft} />
                     {arrays.map((index) => {
                         return (
-                            <div className={cx("list-stories")}>
-                                <div key={index} className={cx("story")}>
+                            <div  key={index} className={cx("list-stories")}>
+                                <div className={cx("story")}>
                                     <img src="/img/VanLun.jpg" alt="" className={cx("avatar-user", "not-seen")} />
                                 </div>
                                 <p className={cx("username")}>ducvan_09</p>
@@ -62,13 +69,14 @@ function Home() {
                     {arraysSuggestion.map((index) => {
                         return (
                             <Tippy
+                                key={index}
                                 interactive
                                 delay={[800, 0]}
                                 placement="bottom-start"
                                 offset={[-6, -20].join(",")}
                                 content={<div>{renderPreview(true)}</div>}
                             >
-                                <div key={index} className={cx("your-account")}>
+                                <div className={cx("your-account")}>
                                     <div className={cx("right-item")}>
                                         <img src="/img/VanLun.jpg" alt="" className={cx("your-avatar-user")} />
                                         <div className={cx("infor")}>
