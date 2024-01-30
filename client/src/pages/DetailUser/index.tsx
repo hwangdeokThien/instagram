@@ -30,18 +30,44 @@ import {
 import { faThreads } from "@fortawesome/free-brands-svg-icons";
 import "./DetailUser.module.scss";
 import Footer from "../../components/Layouts/DefautLayout/Footer";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 // import Switch from 'react-js-switch';
 const cx = classNames.bind(styles);
 
+// const listGender = [
+//     { id: 1, value: "Nữ" },
+//     { id: 2, value: "Nam" },
+//     { id: 3, value: "Custom" },
+//     { id: 4, value: "Không muốn tiết lộ" },
+// ];
+
 function DetailUser() {
-    const btnShowListGenders = useRef<HTMLButtonElement>(null);
+    const [kindOfWeb, setKindOfWeb] = useState("Trang web");
+    const [nickName, setNickName] = useState("LuniuLun");
+    const [gender, setGender] = useState("Nam");
+    const [customGender, setCustomGender] = useState("");
+    const showListGenders = useRef<HTMLInputElement>(null);
     const listGenders = useRef<HTMLDivElement>(null);
+
     const openAndCloseListGenders = (e: React.MouseEvent) => {
         if (listGenders.current) {
             let temp = listGenders.current.style.display;
             if (temp === "none") listGenders.current.style.display = "block";
             else listGenders.current.style.display = "none"; // Fixed this line
+        }
+    };
+
+    const changeGender = (e: React.ChangeEvent<HTMLInputElement>) => {
+        if (showListGenders.current) {
+            showListGenders.current.value = gender;
+        }
+    };
+
+    const customGenderInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+        if (showListGenders.current) {
+            
+            showListGenders.current.value = e.target.value;
+            console.log(e.target.value);
         }
     };
 
@@ -200,7 +226,15 @@ function DetailUser() {
                     </div>
                     <div className={cx("detail-infor")}>
                         <div className={cx("title")}>Trang web</div>
-                        <input type="text" value={"Trang web"} />
+                        <input
+                            className={cx("disable-input")}
+                            readOnly={true}
+                            type="text"
+                            value={kindOfWeb}
+                            onChange={(e) => {
+                                setKindOfWeb(e.target.value);
+                            }}
+                        />
                         <p>
                             Bạn chỉ có thể chỉnh sửa liên kết trên di động. Hãy mở ứng dụng Instagram và chỉnh sửa trang
                             cá nhân của bạn để thay đổi trang web trong phần tiểu sử.
@@ -208,39 +242,97 @@ function DetailUser() {
                     </div>
                     <div className={cx("detail-infor")}>
                         <div className={cx("title")}>Tiểu sử</div>
-                        <input type="text" value={"LuniuLun"} />
+                        <input
+                            type="text"
+                            value={nickName}
+                            onChange={(e) => {
+                                setNickName(e.target.value);
+                            }}
+                        />
                     </div>
                     <div className={cx("detail-infor")}>
                         <div className={cx("title")}>Giới tính</div>
-                        <button
-                            ref={btnShowListGenders}
+                        <input
+                            ref={showListGenders}
                             className={cx("shosen-gender")}
                             onClick={(e) => {
                                 openAndCloseListGenders(e);
                             }}
-                        >
-                            Nam
-                            <FontAwesomeIcon icon={faChevronDown} className={cx("icon-down")} />
-                        </button>
+                            value={gender}
+                            // readOnly
+                        />
+                        <FontAwesomeIcon
+                            icon={faChevronDown}
+                            onClick={(e) => {
+                                openAndCloseListGenders(e);
+                            }}
+                            className={cx("icon-down")}
+                        />
                         <div ref={listGenders} className={cx("list-gender-options")}>
                             <div className={cx("gender-option")}>
                                 <label htmlFor="">Nữ</label>
-                                <input className={cx("gender")} type="radio" name="gender" value="Nữ" />
+                                <input
+                                    className={cx("gender")}
+                                    type="radio"
+                                    name="gender"
+                                    value="Nữ"
+                                    onChange={(e) => {
+                                        setGender(e.target.value);
+                                        changeGender(e);
+                                    }}
+                                />
                             </div>
                             <div className={cx("gender-option")}>
                                 <label htmlFor="">Nam</label>
-                                <input className={cx("gender")} type="radio" name="gender" value="Nam" />
+                                <input
+                                    className={cx("gender")}
+                                    type="radio"
+                                    name="gender"
+                                    value="Nam"
+                                    onChange={(e) => {
+                                        setGender(e.target.value);
+                                        changeGender(e);
+                                    }}
+                                    checked={"Nam" === gender}
+                                />
                             </div>
                             <div className={cx("gender-option")}>
                                 <div>
                                     <label htmlFor="">Tuỳ chỉnh</label>
-                                    <input className={cx("gender")} type="radio" name="gender" value="Tuỳ chỉnh" />
+                                    <input
+                                        className={cx("gender")}
+                                        type="radio"
+                                        name="gender"
+                                        value="custom"
+                                        onChange={(e) => {
+                                            changeGender(e);
+                                            setGender(customGender || "");
+                                        }}
+                                    />
                                 </div>
-                                <input type="text" className={cx("input-gender")} />
+                                <input
+                                    type="text"
+                                    onChange={(e) => {
+                                        setGender(e.target.value);
+                                        setCustomGender(e.target.value)
+                                        changeGender(e);
+                                    }}
+                                    className={cx("input-gender")}
+                                />
                             </div>
                             <div className={cx("gender-option")}>
                                 <label htmlFor="">Không muốn tiết lộ</label>
-                                <input className={cx("gender")} type="radio" name="gender" value="Không muốn tiết lộ" />
+                                <input
+                                    className={cx("gender")}
+                                    type="radio"
+                                    name="gender"
+                                    value="Không muốn tiết lộ"
+                                    onChange={(e) => {
+                                        setGender(e.target.value);
+                                        changeGender(e);
+                                    }}
+                                    checked={"Không muốn tiết lộ" === gender}
+                                />
                             </div>
                         </div>
                         <p>Thông tin này sẽ không xuất hiện trên trang cá nhân công khai của bạn.</p>

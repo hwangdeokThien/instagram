@@ -129,7 +129,7 @@ button {
 }
 
 .footer {
-    color: var(--blue-text-color);
+    color: var(--blue-background-color);
     font-weight: 600;
 }
 
@@ -226,13 +226,26 @@ button {
 
 .right-item {
     padding: 8px 12px;
-    background-color: var(--blue-text-color);
+    background-color: var(--blue-background-color);
     border-radius: 10px;
+    cursor: pointer;
+}
+
+.right-item:hover {
+    background-color: var(--strong-blue-background-color);
 }
 
 .detail-infor {
     position: relative;
     margin-bottom: 20px;
+}
+
+.disable-input {
+    &:read-only {
+        cursor: not-allowed;
+        outline: none;
+        color: var(--grey-text-color);
+    }
 }
 
 .input-gender {}
@@ -254,8 +267,7 @@ button {
     padding: 12px 0;
 }
 
-.detail-infor p {
-}
+.detail-infor p {}
 
 .list-gender-options {
     position: absolute;
@@ -318,10 +330,10 @@ button {
 .icon-down {
     position: absolute;
     right: 16px;
-    top: 13px;
+    bottom: 44px;
     font-size: 1.2rem;
     color: var(--grey-text-color);
-
+    cursor: pointer;
 }
 
 .gender {
@@ -338,7 +350,7 @@ button {
     align-items: center;
 }
 
-.show-suggestedUser >div {
+.show-suggestedUser>div {
     width: 86%;
 }
 
@@ -348,18 +360,22 @@ button {
     margin-left: 10px;
 }
 
-.wrapper-btn_submit{
+.wrapper-btn_submit {
     display: flex;
     justify-content: flex-end;
 }
 
-.btn_submit{
-    padding: 16px 120px;
-    background-color: var(--blue-text-color);
+.btn_submit {
+    padding: 14px 120px;
+    background-color: var(--blue-background-color);
     text-align: center;
     border-radius: 12px;
     font-size: 1.6rem;
     margin: 10px 0 50px;
+}
+
+.btn_submit:hover {
+    background-color: var(--strong-blue-background-color);
 }
 
 .slider {}
