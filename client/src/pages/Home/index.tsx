@@ -7,18 +7,31 @@ import { faCircleChevronLeft, faCircleChevronRight } from "@fortawesome/free-sol
 import PreviewUser from "../../components/PreviewUser";
 import { Link } from "react-router-dom";
 import Post from "../../components/Post";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import axios from "axios";
 const cx = classNames.bind(styles);
 
 function Home() {
     const arrays = [1, 2, 3, 4, 5, 6, 7, 8];
     const arraysSuggestion = [1, 2, 3, 4];
+    const [listUrlAva, setListUrlAva] = useState([]);
 
     useEffect(() => {
-        if(sessionStorage.getItem("userID") == null ) {
+        if (sessionStorage.getItem("userID") == null) {
             window.location.href = "/login";
         }
-    }, [sessionStorage.getItem("userID")])
+    }, [sessionStorage.getItem("userID")]);
+    useEffect(() => {
+        axios
+            .get("http://localhost:8080/api/v1/fileUpload")
+            .then((res) => {
+                if (res.data.status == "ok") {
+                    setListUrlAva(res.data.data);
+                    console.log(listUrlAva);
+                }
+            })
+            .catch(() => {});
+    }, []);
 
     const renderPreview = (isExistingPoster: boolean) => {
         return (
@@ -33,11 +46,11 @@ function Home() {
             <div className={cx("content")}>
                 <div className={cx("heading")}>
                     <FontAwesomeIcon className={cx("icon-show-more-left")} icon={faCircleChevronLeft} />
-                    {arrays.map((index) => {
+                    {listUrlAva.map((ava, index) => {
                         return (
-                            <div  key={index} className={cx("list-stories")}>
+                            <div key={index} className={cx("list-stories")}>
                                 <div className={cx("story")}>
-                                    <img src="/img/VanLun.jpg" alt="" className={cx("avatar-user", "not-seen")} />
+                                    <img src={ava} alt="" className={cx("avatar-user", "not-seen")} />
                                 </div>
                                 <p className={cx("username")}>ducvan_09</p>
                             </div>
@@ -53,7 +66,11 @@ function Home() {
             <div className={cx("right-sidebar")}>
                 <div className={cx("my-account")}>
                     <Link hrefLang="/profile" className={cx("right-item")} to={"profile"}>
-                        <img src="http://localhost:8080/api/v1/fileUpload/files/avatar_user.jpg" alt="" className={cx("my-avatar-user")} />
+                        <img
+                            src="http://localhost:8080/api/v1/fileUpload/files/avatar_user.jpg"
+                            alt=""
+                            className={cx("my-avatar-user")}
+                        />
                         <div className={cx("infor")}>
                             <p className={cx("username")}>ducvan_09</p>
                             <p className={cx("myname")}>Đức Vấn</p>
@@ -66,7 +83,7 @@ function Home() {
                         <p>Gợi ý cho bạn</p>
                         <a href="#">Xem tất cả</a>
                     </div>
-                    {arraysSuggestion.map((index) => {
+                    {arraysSuggestion.map((ava ,index) => {
                         return (
                             <Tippy
                                 key={index}
@@ -78,7 +95,7 @@ function Home() {
                             >
                                 <div className={cx("your-account")}>
                                     <div className={cx("right-item")}>
-                                        <img src="/img/VanLun.jpg" alt="" className={cx("your-avatar-user")} />
+                                        <img src={listUrlAva[listUrlAva.length - 4 - index]} alt="" className={cx("your-avatar-user")} />
                                         <div className={cx("infor")}>
                                             <p className={cx("username")}>ducvan_09</p>
                                             <p className={cx("myname")}>Đức Vấn</p>

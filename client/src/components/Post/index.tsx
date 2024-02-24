@@ -25,7 +25,7 @@ function Post() {
         <div className={cx("wrapper")}>
             <div className={cx("heading")}>
                 <div className={cx("wrapper-avatar")}>
-                    <img src="/img/DucVan.jpg" alt="" srcSet="" className={cx("avatar-user")} />
+                    <img src="http://localhost:8080/api/v1/fileUpload/files/245463959_251292830168752_7292514055282375299_n.jpg" alt="" srcSet="" className={cx("avatar-user")} />
                 </div>
                 <div className={cx("username")}>ducvan_09</div>
                 <div className={cx("time-post")}>17 giờ</div>

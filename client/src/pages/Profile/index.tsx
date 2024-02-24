@@ -13,7 +13,7 @@ function Profile() {
     return (
         <div className={cx("wrapper")}>
             <div className={cx("heading")}>
-                <img src="/img/VanLun.jpg" alt="" className={cx("avatar-user")} />
+                <img src="http://localhost:8080/api/v1/fileUpload/files/avatar_user.jpg" alt="" className={cx("avatar-user")} />
                 <div className={cx("individual-information")}>
                     <div className={cx("top-items")}>
                         <div className={cx("username")}>ducvan_09</div>
