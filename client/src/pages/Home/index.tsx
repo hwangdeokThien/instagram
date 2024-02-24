@@ -53,7 +53,7 @@ function Home() {
             <div className={cx("right-sidebar")}>
                 <div className={cx("my-account")}>
                     <Link hrefLang="/profile" className={cx("right-item")} to={"profile"}>
-                        <img src="/img/VanLun.jpg" alt="" className={cx("my-avatar-user")} />
+                        <img src="http://localhost:8080/api/v1/fileUpload/files/avatar_user.jpg" alt="" className={cx("my-avatar-user")} />
                         <div className={cx("infor")}>
                             <p className={cx("username")}>ducvan_09</p>
                             <p className={cx("myname")}>Đức Vấn</p>

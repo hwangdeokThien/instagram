@@ -31,6 +31,7 @@ import { faThreads } from "@fortawesome/free-brands-svg-icons";
 import "./DetailUser.module.scss";
 import Footer from "../../components/Layouts/DefautLayout/Footer";
 import { useRef, useState } from "react";
+import UploadFileComponent from "../../components/FileUpload/fileUpload";
 // import Switch from 'react-js-switch';
 const cx = classNames.bind(styles);
 
@@ -70,6 +71,8 @@ function DetailUser() {
             console.log(e.target.value);
         }
     };
+
+
 
     return (
         <div className={cx("wrapper")}>
@@ -216,13 +219,15 @@ function DetailUser() {
                     <div className={cx("title")}>Chỉnh sửa trang cá nhân</div>
                     <div className={cx("box-user")}>
                         <div className={cx("left-item")}>
-                            <img src="/img/VanLun.jpg" alt="" className={cx("avatar-user")} />
+                            <img src="http://localhost:8080/api/v1/fileUpload/files/avatar_user.jpg" alt="" className={cx("avatar-user")} />
                             <div className={cx("infor-user")}>
                                 <div className={cx("username")}>ducvan_09</div>
                                 <div className={cx("name")}>Đức Vấn</div>
                             </div>
                         </div>
-                        <button className={cx("right-item")}>Đổi ảnh</button>
+                        {/* <button onClick={handleUploadFile} className={cx("right-item")}>Đổi ảnh</button> */}
+                        {/* <input type="file" className={cx("right-item")} readOnly/> */}
+                        <UploadFileComponent/>
                     </div>
                     <div className={cx("detail-infor")}>
                         <div className={cx("title")}>Trang web</div>
@@ -259,7 +264,7 @@ function DetailUser() {
                                 openAndCloseListGenders(e);
                             }}
                             value={gender}
-                            // readOnly
+                            readOnly
                         />
                         <FontAwesomeIcon
                             icon={faChevronDown}

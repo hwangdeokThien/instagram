@@ -75,7 +75,7 @@ function Sidebar() {
                     <div className={cx("title")}>Tạo</div>
                 </Link>
                 <Link className={cx("nav-link")} to={"/profile"}>
-                    <img src="/img/VanLun.jpg" alt="" srcSet="" className={cx("avatar-user")} />
+                    <img src="http://localhost:8080/api/v1/fileUpload/files/avatar_user.jpg" alt="" srcSet="" className={cx("avatar-user")} />
                     <div className={cx("title")}>Trang cá nhân</div>
                 </Link>
             </div>
