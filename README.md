@@ -1,7 +1,7 @@
 # Instagram clone project
-This is a clone version of instagram website. In this application, we using NodeJS, ReactTypeScript, and server managed by vite
+This is a website that helps identify rare animals. In this application, we using Python, ReactJS.
 
-## Set up enviroment from scratch (for Linux)
+## Set up enviroment 
 ### nodeJs
 1. install Node Version Manager
 ```bash
@@ -33,44 +33,29 @@ node --version
 
 If the terminal print out the version of node (v18), installation is success
 
-### pnpm
-install through npm
-
-```bash
-npm install -g pnpm
-```
-
-### vite
-create new vite project (you can skip this part)
-
-```bash
-pnpm create vite
-```
-
 ## Getting Started
 
 To run the server locally, follow these steps:
 
 1. Clone and open the repository:
     ```bash
-    git clone https://github.com/hwangdeokThien/instagram.git
-    cd instagram
+    git clone https://github.com/LuniuLun/Identify_rare_animals.git
+    cd Identify_rare_animals
     ```
 2. Install required packages for frontend.
     ```bash
-    pnpm i
+    npm i
     ```
 3. Navigate to server folder and install required packages for backend server.
     ```bash
-    cd ./server
-    pnpm i
+    (Chưa biết chạy server kiểu sao nên chưa viết)
     ```
 4. Run the server
     ```bash
-    pnpm run server
+    (Chưa biết chạy server kiểu sao nên chưa viết)
     ```
 5. Open another terminal tab in root folder and run web page.
     ```bash
-    pnpm run dev
+    npm start
     ```
-6. Ctrl + click to ip server to open localhost
+6. When the website appears, you have succeeded
